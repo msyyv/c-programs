@@ -1,0 +1,57 @@
+#include<stdio.h>
+#include<conio.h>
+struct student
+{
+ int roll;
+ char name[20];     /*
+ char adress[30];
+ int mmarks,smarks,emarks;
+ */
+};
+void main()
+{
+int i,a,b,c,d;
+FILE *fp;
+struct student st;
+char fname[10];
+clrscr();
+printf("\n enter file name:");
+gets(fname);
+printf("\n how many student records you want to insert::");
+scanf("%d",&a);
+fp=fopen(fname,"w");
+for(i=0;i<a;i++)
+{
+fflush(stdin);
+printf("\n enter student roll numnber=");
+scanf("%d",&st.roll);
+fputc(st.roll,fp);
+//fwrite(&st.roll,sizeof(struct student),1,fp);
+printf("\n enter student name=");
+scanf("%d",&st.name);
+//fwrite(&st.name,sizeof(struct student),1,fp);
+fputs(st.name,fp);
+     /*
+printf("\n enter student address=");
+scanf("%d",&st[i].adress);
+printf("\n enter student maths marks=");
+scanf("%d",&st[i].mmarks);
+printf("\n enter student english marks=");
+scanf("%d",&st[i].emarks);
+printf("\n enter student science marks=");
+scanf("%d",&st[i].smarks);
+*/
+}//for()
+fclose(fp);
+i=0;
+fp=fopen(fname,"r");
+while(fread(&st,sizeof(struct student),1,fp))
+{
+printf("\n i=%d",i);
+printf(" \n student name=%s \n student roll number=%d ",st.name,st.roll);
+
+
+}
+fclose(fp);
+getch();
+}
